@@ -1,4 +1,4 @@
-const BASE_URL = window.location.origin.includes('localhost:5173')
+const BASE_URL = window.location.origin.includes('localhost')
   ? 'http://localhost:5000/api'
   : '/api';
 

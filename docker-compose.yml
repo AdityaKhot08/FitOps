@@ -1,7 +1,7 @@
 services:
   # MongoDB Database
   mongodb:
-    image: mongo:7.0-noble
+    image: mongo:latest
     container_name: fitops-mongodb
     restart: unless-stopped
     ports:

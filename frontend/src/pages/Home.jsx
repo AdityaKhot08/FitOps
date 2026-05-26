@@ -12,7 +12,7 @@ export default function Home({ setCurrentPage, isAuthenticated }) {
 
       <h1 className="hero-title">
         Optimize Your Body <br />
-        <span style={{ background: 'var(--primary-gradient)', WebkitBackgroundClip: 'text', WebkitTextFill-color: 'transparent' }}>
+        <span style={{ background: 'var(--primary-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
           Powered by FitOps AI
         </span>
       </h1>

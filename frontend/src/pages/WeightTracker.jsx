@@ -1,7 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Trash2, Scale, Calendar, AlertCircle, RefreshCw } from 'lucide-react';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 
 export default function WeightTracker() {
   const [weights, setWeights] = useState([]);
