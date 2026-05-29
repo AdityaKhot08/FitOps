@@ -1,0 +1,47 @@
+name: FitOps Continuous Integration Platform
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  quality-assurance:
+    name: Code Validation & Quality Gates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Clone Code to Cloud Runner
+        uses: actions/checkout@v4
+
+      - name: 2. Initialize Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 3. Verify and Compile Backend Dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: 4. Execute Backend Automated Unit Tests
+        run: |
+          cd backend
+          npm test --if-present
+
+  container-orchestration:
+    name: Multi-Container Validation Mesh
+    needs: quality-assurance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Clone Code to Cloud Runner
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Docker Buildx (Cache Booster)
+        uses: actions/docker-setup-buildx-action@v3
+
+      - name: 3. Cross-Compile Microservice Architecture via Compose
+        run: |
+          docker compose build
